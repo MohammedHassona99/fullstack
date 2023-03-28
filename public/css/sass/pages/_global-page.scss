@@ -1,0 +1,23 @@
+/* Start Global */
+body {
+  font-family: GraublauWeb;
+}
+@font-face {
+  font-family: GraublauWeb;
+  src: url("./../../../fonts/GE-Flow-Regular.otf") format("opentype");
+}
+.color-main {
+  color: $main-color !important;
+}
+.bg-main {
+  background-color: $main-color !important;
+}
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $main-color;
+  border-radius: 10px;
+}
+/* End Global */

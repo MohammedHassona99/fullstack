@@ -1,0 +1,62 @@
+/* Start Nav */
+nav {
+  height: 100px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  .navbar-brand {
+    padding: 5px 0;
+    img {
+      height: 90px;
+    }
+  }
+  .dropdown-toggle::after {
+    display: none;
+  }
+  .nav-link {
+    color: black;
+    &.active,
+    &:hover,
+    &:focus {
+      color: $main-color;
+    }
+  }
+  .navbar-toggler:focus {
+    box-shadow: none;
+  }
+  .dropdown-menu {
+    text-align: center;
+    min-width: fit-content;
+    border: none;
+    .dropdown-item:hover {
+      background-color: $main-color;
+      color: white;
+    }
+  }
+  .navbar-collapse {
+    z-index: 100;
+    background-color: white;
+    padding-right: 20px;
+  }
+}
+header {
+  height: calc(100vh - 100px);
+  background-image: url("./../../../images/header-img.png");
+  background-size: cover;
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($color: $main-color, $alpha: 0.48);
+  }
+  .container {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+  }
+}
+/* End Nav */

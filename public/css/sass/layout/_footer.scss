@@ -1,0 +1,19 @@
+footer {
+  background-image: url("./../../../images/footer.png");
+  background-size: cover;
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($color: $main-color, $alpha: 0.49);
+  }
+  .container,
+  p {
+    position: relative;
+    z-index: 2;
+  }
+}
