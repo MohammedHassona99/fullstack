@@ -13,10 +13,16 @@
             <div class="col-md-12">
                 <label class="form-label" for="firstname">Title</label>
                 <input class="form-control" type="text" name="title" id="title">
+                @error('title')
+                    <small class="form-text text-danger">{{ $message }}</small>
+                @enderror
             </div>
             <div class="col-md-8">
                 <label class="form-label" for="description">Description</label>
                 <textarea class="form-control" name="content" id="description" style="resize: none; min-height: 180px"></textarea>
+                @error('description')
+                    <small class="form-text text-danger">{{ $message }}</small>
+                @enderror
             </div>
             <div class="col-md-4">
                 <div class="form-group">

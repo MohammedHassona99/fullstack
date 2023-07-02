@@ -7,9 +7,10 @@ use App\Models\Category;
 use App\Models\Attachment;
 use App\Models\Course;
 use Attribute;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Validator;
 
 class DashboardController extends Controller
 {
@@ -26,14 +27,13 @@ class DashboardController extends Controller
         if (isset($_GET['active'])) {
             $active = $_GET['active'];
             $post_id = $_GET['post_id'];
-
             $post = Post::find($post_id);
             if ($active == 0) {
                 $post->status = 1;
             } else {
                 $post->status = 0;
             }
-            $post->save();  
+            $post->save();
         }
         $posts = Post::all()->sortByDesc('id');
         return view('dashboard.news.show', compact('posts'));
@@ -67,11 +67,19 @@ class DashboardController extends Controller
                 $img_id = null;
             }
             $request->post('is_slider') === null ? $is_slider = false : $is_slider = true;
-
+            $rule = [
+                'title' => 'required|max:100|unique:posts,title',
+                'description' => 'required|max:255'
+            ];
+            $message = ['title.required' => __('message.titleName'), 'title.unique' => __('message.titleUnique'), 'description.required' => __('message.descRequired')];
+            $validate = Validator::make($request->all(), $rule, $message);
+            if ($validate->fails()) {
+                return redirect()->back()->withErrors($validate)->withInputs($request->all());
+            }
             Post::create([
-                'title' => $request->post('title'),
-                'description' => $request->post('content'),
-                'category' => $request->post('category'),
+                'title' => $request->title,
+                'description' => $request->content,
+                'category' => $request->category,
                 'author' => Auth::user()->id,
                 'image' => $img_id,
                 'is_slider' => $is_slider,
