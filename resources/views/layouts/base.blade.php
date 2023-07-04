@@ -27,15 +27,16 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ route('homepage') }}">الصفحة
-                            الرئيسية</a>
+                        <a class="nav-link active" aria-current="page" href="{{ route('homepage') }}">
+                            {{ __('message.mainTitle') }}
+                        </a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownTwo"
                             data-bs-toggle="dropdown" aria-expanded="false">عن الشركة <i
                                 class="fa-solid fa-angle-down"></i></a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownTwo">
-                            <li><a class="dropdown-item" href="#">من نحن</a></li>
+                            <li><a class="dropdown-item" href="#"> {{ __('message.about') }}</a></li>
                             <li><a class="dropdown-item" href="{{ route('news') }}">اخبارنا</a></li>
                         </ul>
                     </li>
@@ -56,7 +57,7 @@
                         <a class="nav-link" aria-current="page" href="{{ route('course') }}">الدورات التدريبية </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="{{ route('contact') }}">تواصل معنا</a>
+                        <a class="nav-link" aria-current="page" href="{{ route('contact') }}"> {{ __('message.about')}}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="#">عروض الاسعار</a>
@@ -77,8 +78,7 @@
                     @endguest
                     @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                         <li class="nav-item">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownLoging" rel="alternate"
-                                hreflang="{{ $localeCode }}" data-bs-toggle="dropdown" aria-expanded="false"
+                            <a class="nav-link dropdown-toggle" hreflang="{{ $localeCode }}"
                                 href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
                                 {{ $properties['native'] }}
                             </a>

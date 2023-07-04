@@ -20,11 +20,12 @@ Route::get('/course', [HomepageController::class, 'course'])->name('course');
 Route::post('/trainee', [HomepageController::class, 'add_trainee'])->name('add_trainee');
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('/dashboard/imagesLibrary', [ImageLibraryController::class, 'index'])->name('images_library');
-
-Route::group(['prefix' => 'dashboard/news'], function () {
-    Route::get('/', [DashboardController::class, 'show_news'])->name('show_news');
-    Route::any('/add', [DashboardController::class, 'add_news'])->name('add_news');
-    Route::any('/edit/{id}', [DashboardController::class, 'edit_news'])->name('edit_news');
+Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {
+    Route::group(['prefix' => 'dashboard/news'], function () {
+        Route::get('/', [DashboardController::class, 'show_news'])->name('show_news');
+        Route::any('/add', [DashboardController::class, 'add_news'])->name('add_news');
+        Route::any('/edit/{id}', [DashboardController::class, 'edit_news'])->name('edit_news');
+    });
 });
 Route::group(['prefix' => 'dashboard'], function () {
     Route::get('/courses', [DashboardController::class, 'show_course'])->name('show_course');
