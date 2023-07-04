@@ -75,17 +75,15 @@
                             <a class="nav-link" aria-current="page" href="{{ asset('dashboard') }}">لوحة التحكم</a>
                         </li>
                     @endguest
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownLoging"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa-solid fa-angle-down"></i> عربي
-                            <i class="fa-solid fa-globe"></i>
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownLoging">
-                            <li><a class="dropdown-item" href="#">English</a></li>
-                            <li><a class="dropdown-item" href="#">France</a></li>
-                        </ul>
-                    </li>
+                    @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                        <li class="nav-item">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownLoging" rel="alternate"
+                                hreflang="{{ $localeCode }}" data-bs-toggle="dropdown" aria-expanded="false"
+                                href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                {{ $properties['native'] }}
+                            </a>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
         </div>
