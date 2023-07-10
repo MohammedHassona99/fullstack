@@ -21,6 +21,7 @@ Route::post('/trainee', [HomepageController::class, 'add_trainee'])->name('add_t
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('/dashboard/imagesLibrary', [ImageLibraryController::class, 'index'])->name('images_library');
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {
+    Route::get('/youtube', [HomepageController::class, 'getVideo'])->name('youtube');
     Route::group(['prefix' => 'dashboard/news'], function () {
         Route::get('/', [DashboardController::class, 'show_news'])->name('show_news');
         Route::any('/add', [DashboardController::class, 'add_news'])->name('add_news');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\VideoViewer;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Illuminate\Support\Facades\Mail;
@@ -9,6 +10,7 @@ use App\Mail\Welcome;
 use App\Models\Comment;
 use App\Models\Trainee;
 use App\Models\Course;
+use App\Models\Video;
 
 class HomepageController extends Controller
 {
@@ -60,5 +62,12 @@ class HomepageController extends Controller
         $arr['fname'] = $request->post('firstName');
         $arr['lname'] = $request->post('lastName');
         return view('pages.contact', $arr);
+    }
+
+    public function getVideo()
+    {
+        $video = Video::first();
+        event(new VideoViewer($video));
+        return view('pages.youtube')->with('video', $video);
     }
 }
