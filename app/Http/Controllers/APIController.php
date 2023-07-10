@@ -21,6 +21,7 @@ class APIController extends Controller
     public function delete_cat($id)
     {
         $result = Category::where('id', $id)->get()->first()->delete();
+
         if ($result) {
             return ['status' => 1];
         } else {
@@ -29,11 +30,11 @@ class APIController extends Controller
     }
     public function delete_post($id)
     {
-        $result = Post::where('id', $id)->get()->first()->delete();
+        $result = Post::where('id', $id)->first()->delete();
         if ($result) {
-            return ['status' => 1];
+            return ['success' => 'Success'];
         } else {
-            return ['status' => 0];
+            return ['error' => 'Error'];
         }
     }
     public function get_cats()

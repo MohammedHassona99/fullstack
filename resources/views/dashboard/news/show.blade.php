@@ -7,6 +7,16 @@
 
     <!-- Content Row -->
     <div class="row">
+        @if (Session::has('success'))
+            <div class="alert alert-primary" role="alert">
+                {{ Sesstion::get('success') }}
+            </div>
+        @endif
+        @if (Session::has('error'))
+            <div class="alert alert-danger" role="alert">
+                {{ Sesstion::get('error') }}
+            </div>
+        @endif
         <div class="col-md-12">
             <div class="table-responsive">
                 <table class="table table-bordered">
