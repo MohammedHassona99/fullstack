@@ -41,7 +41,7 @@ class DashboardController extends Controller
     public function add_news(Request $request)
     {
         if ($request->post()) {
-            $allow_extension = ['pdf', 'jpg', 'jpeg'];
+            $allow_extension = ['pdf', 'jpg', 'jpeg', 'png'];
             $img = $request->file('post_img');
             if ($img != null) {
                 $img_org_name = $img->getClientOriginalName();
@@ -73,9 +73,9 @@ class DashboardController extends Controller
             ];
             $message = ['title.required' => __('message.titleName'), 'title.unique' => __('message.titleUnique'), 'description.required' => __('message.descRequired')];
             $validate = Validator::make($request->all(), $rule, $message);
-            if ($validate->fails()) {
-                return redirect()->back()->withErrors($validate)->withInputs($request->all());
-            }
+            // if ($validate->failed()) {
+            //     return redirect()->back()->withErrors($validate)->withInputs($request->all());
+            // }
             Post::create([
                 'title' => $request->title,
                 'description' => $request->content,

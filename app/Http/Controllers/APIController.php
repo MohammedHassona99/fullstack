@@ -9,6 +9,10 @@ use App\Models\Course;
 
 class APIController extends Controller
 {
+    public function add_news()
+    {
+        
+    }
     public function delete_course($id)
     {
         $result = Course::where('id', $id)->get()->first()->delete();

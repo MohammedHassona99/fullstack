@@ -53,4 +53,13 @@
             </div>
         </div>
     </form>
+
+
+    <script>
+        $.ajax({
+            type: 'post',
+            url: '{{ route('add_news_api') }}',
+            data : "",
+        })
+    </script>
 @endsection
