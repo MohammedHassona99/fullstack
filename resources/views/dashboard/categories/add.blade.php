@@ -97,7 +97,7 @@
                             let tr =
                                 `<tr><td>${id}</td> <td>${title}</td> <td>${desc}</td> <td>${created_at}</td></tr>`;
                             document.querySelector('#table').appendChild(tr);
-                            console.log(tr)
+                            console.log(tr);
                         }
                     }
 

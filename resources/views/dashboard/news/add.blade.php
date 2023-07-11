@@ -7,7 +7,7 @@
 
     <!-- Content Row -->
 
-    <form action="{{ route('add_news') }}" method="post" enctype="multipart/form-data">
+    <form action="{{-- route('add_news') --}}" method="post" id="formNew" {{-- enctype="multipart/form-data" --}}>
         @csrf
         <div class="row">
             <div class="col-md-12">
@@ -49,17 +49,33 @@
                 </div>
             </div>
             <div class="col-md-12 mt-4">
-                <input class="btn btn-block btn-primary" type="submit" value="Add new">
+                <button id="add_new" class="btn btn-block btn-primary" type="button">Add
+                    new</button>
             </div>
         </div>
     </form>
-
-
     <script>
-        $.ajax({
-            type: 'post',
-            url: '{{ route('add_news_api') }}',
-            data : "",
-        })
+        document.querySelector('#add_new').addEventListener('click', function add_news(e) {
+            e.preventDefault();
+            let formData = new FormData(document.querySelector('#formNew'));
+            console.log(formData);
+            $.ajax({
+                type: 'post',
+                enctype: 'multipart/form-data',
+                url: '{{ route('add_news_api') }}',
+                data: formData,
+                processData: false,
+                contentType: false,
+                cache: false,
+                success: function(data) {
+                    if (data.status === true) {
+                        alert(data.msg);
+                    }
+                },
+                error: function(data) {
+
+                }
+            });
+        });
     </script>
 @endsection

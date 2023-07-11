@@ -6,8 +6,6 @@ use App\Models\Post;
 use App\Models\Category;
 use App\Models\Attachment;
 use App\Models\Course;
-use Attribute;
-use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
