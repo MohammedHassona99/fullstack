@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Phone;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -44,4 +45,11 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    ########### relation ##############
+
+    public function phone()
+    {
+        return $this->hasOne('App\Models\Phone', 'user_id');
+    }
 }
