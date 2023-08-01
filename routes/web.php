@@ -56,3 +56,5 @@ Route::get('/callback/{service}', [SocialController::class, 'redirect']);
 ############### Relation #####################
 
 Route::get('hasOne', [RelationController::class, 'hasOne']);
+Route::get('hasOneReverse', [RelationController::class, 'hasOneReverse']);
+Route::get('hasPhone', [RelationController::class, 'hasPhone']);
