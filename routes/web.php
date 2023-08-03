@@ -58,3 +58,6 @@ Route::get('/callback/{service}', [SocialController::class, 'redirect']);
 Route::get('hasOne', [RelationController::class, 'hasOne']);
 Route::get('hasOneReverse', [RelationController::class, 'hasOneReverse']);
 Route::get('hasPhone', [RelationController::class, 'hasPhone']);
+Route::get('hasMany', [RelationController::class, 'hasMany']);
+Route::get('hospitals', [RelationController::class, 'hospitals']);
+Route::get('doctor/{id}', [RelationController::class, 'doctors'])->name('doctors');
