@@ -61,3 +61,4 @@ Route::get('hasPhone', [RelationController::class, 'hasPhone']);
 Route::get('hasMany', [RelationController::class, 'hasMany']);
 Route::get('hospitals', [RelationController::class, 'hospitals']);
 Route::get('doctor/{id}', [RelationController::class, 'doctors'])->name('doctors');
+Route::get('deleteDoctor/{id}', [RelationController::class, 'deleteDoctor'])->name('deleteDoctor');

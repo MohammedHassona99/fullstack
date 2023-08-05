@@ -42,7 +42,9 @@ class RelationController extends Controller
         //     echo $doctor->name . "<br>";
         // }
         // return Hospital::find(1);
-        Doctor::find(3)->hospital->name;
+        return Hospital::with('doctor')->whereHas('doctor', function ($q) {
+            $q->where('gender', '1');
+        })->get();
     }
     public function hospitals()
     {
@@ -51,8 +53,18 @@ class RelationController extends Controller
     }
     public function doctors($id)
     {
-        $doctors = Hospital::find($id)->doctor;
-        // $doctor = $hospital->doctor;
-        return view('pages.doctor', compact('doctors'));
+        $hospital = Hospital::find($id);
+        $doctor = $hospital->doctor;
+        return view('pages.doctor', compact('doctor'));
+    }
+    public function deleteDoctor($id)
+    {
+        $hospital = Hospital::find($id);
+
+        if (!$hospital)
+            return abort('404');
+
+        $hospital->doctor->delete();
+        $hospital->delete();
     }
 }

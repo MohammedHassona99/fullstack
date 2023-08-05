@@ -15,12 +15,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @if (isset($doctors) && $doctors->count() > 0)
-                            @foreach ($doctors as $doctor)
+                        @if (isset($doctor) && $doctor->count() > 0)
+                            @foreach ($doctor as $doc)
                                 <tr>
-                                    <th>{{ $doctor->id }}</th>
-                                    <td>{{ $doctor->name }}</td>
-                                    <td>{{ $doctor->title }}</td>
+                                    <th>{{ $doc->id }}</th>
+                                    <td>{{ $doc->name }}</td>
+                                    <td>{{ $doc->title }}</td>
                                 </tr>
                             @endforeach
                         @endif

@@ -24,7 +24,10 @@
                                     <td> {{ $hospital->name }}</td>
                                     <td> {{ $hospital->address }}</td>
                                     <td><a href="{{ route('doctors', $hospital->id) }}" class="btn btn-success">show all
-                                            Doctors</a></td>
+                                            Doctors</a>
+                                        <a href="{{ route('deleteDoctor', $hospital->id) }}" class="btn btn-danger">
+                                            Delete</a>
+                                    </td>
                                 </tr>
                             @endforeach
                         @endif
