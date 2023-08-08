@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Hospital extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'address', 'created_at', 'updated_at'];
+    protected $fillable = ['name', 'address', 'country_id', 'created_at', 'updated_at'];
     protected $hidden = ['created_at', 'updated_at'];
     public $timestamps = true; // default value is true
 

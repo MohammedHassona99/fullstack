@@ -33,7 +33,7 @@ class DashboardController extends Controller
             }
             $post->save();
         }
-        $posts = Post::all()->sortByDesc('id');
+        $posts = Post::paginate(PAGINATION_COUNT);
         return view('dashboard.news.show', compact('posts'));
     }
     public function add_news(Request $request)

@@ -10,6 +10,7 @@ use App\Http\Controllers\RelationController;
 use Illuminate\Support\Facades\Auth;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
+define('PAGINATION_COUNT', 2);
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {
     Route::get('/', [HomepageController::class, 'index'])->name('homepage');
 });
@@ -67,3 +68,4 @@ Route::get('service-doctors', [RelationController::class, 'getServiceDoctors']);
 Route::get('doctors-services/{id}', [RelationController::class, 'doctors_services'])->name('doctors-services');
 Route::post('saveServices', [RelationController::class, 'saveServices'])->name('saveServices');
 Route::get('hasOneThrough', [RelationController::class, 'hasOneThrough'])->name('hasOneThrough');
+Route::get('hasManyThrough', [RelationController::class, 'hasManyThrough'])->name('hasManyThrough');

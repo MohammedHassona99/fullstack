@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Country;
 use App\Models\Doctor;
 use App\Models\Hospital;
 use App\Models\Patient;
@@ -98,5 +99,10 @@ class RelationController extends Controller
     public function hasOneThrough()
     {
         return $patient = Patient::find(1)->doctor;
+    }
+    public function hasManyThrough()
+    {
+        $country = Country::with('doctor')->find(1);
+        return $country;
     }
 }
