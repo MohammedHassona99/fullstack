@@ -62,3 +62,8 @@ Route::get('hasMany', [RelationController::class, 'hasMany']);
 Route::get('hospitals', [RelationController::class, 'hospitals']);
 Route::get('doctor/{id}', [RelationController::class, 'doctors'])->name('doctors');
 Route::get('deleteDoctor/{id}', [RelationController::class, 'deleteDoctor'])->name('deleteDoctor');
+Route::get('doctors-services', [RelationController::class, 'getDoctorServices']);
+Route::get('service-doctors', [RelationController::class, 'getServiceDoctors']);
+Route::get('doctors-services/{id}', [RelationController::class, 'doctors_services'])->name('doctors-services');
+Route::post('saveServices', [RelationController::class, 'saveServices'])->name('saveServices');
+Route::get('hasOneThrough', [RelationController::class, 'hasOneThrough'])->name('hasOneThrough');

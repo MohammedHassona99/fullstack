@@ -12,6 +12,7 @@
                             <th>#</th>
                             <th>name</th>
                             <th>title</th>
+                            <th>operations</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -21,6 +22,8 @@
                                     <th>{{ $doc->id }}</th>
                                     <td>{{ $doc->name }}</td>
                                     <td>{{ $doc->title }}</td>
+                                    <td><a href="{{ route('doctors-services', $doc->id) }}" class="btn btn-success">show the
+                                            services</a></td>
                                 </tr>
                             @endforeach
                         @endif

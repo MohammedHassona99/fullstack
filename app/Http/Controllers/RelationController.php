@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Doctor;
 use App\Models\Hospital;
+use App\Models\Patient;
 use App\Models\Phone;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -64,7 +66,37 @@ class RelationController extends Controller
         if (!$hospital)
             return abort('404');
 
-        $hospital->doctor->delete();
+        $hospital->doctor()->delete();
         $hospital->delete();
+        redirect()->back();
+    }
+    public function getDoctorServices()
+    {
+        return $doctor = Doctor::with('services')->find(2);
+        // return $doctor->services;
+    }
+    public function getServiceDoctors()
+    {
+        return Service::find(1);
+    }
+    public function doctors_services($id)
+    {
+        $doctor = Doctor::find($id);
+        // return $services = $doctor->services;
+        $doctors = Doctor::select('id', 'name')->get();
+        $services = Service::select('id', 'name')->get();
+        return view('pages.doctors_services', compact('doctors', 'services'));
+    }
+    public function saveServices(Request $request)
+    {
+        $doctor = Doctor::find($request->doctors);
+        $doctor->services()->attach($request->services); // insert many to many any data
+        // $doctor->services()->sync($request->services); inset many to many but delete the data and add
+        // $doctor->services()->syncWithoutDetaching($request->services); insert many to many without delete any data
+        return 'success';
+    }
+    public function hasOneThrough()
+    {
+        return $patient = Patient::find(1)->doctor;
     }
 }
