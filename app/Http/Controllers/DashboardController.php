@@ -127,7 +127,6 @@ class DashboardController extends Controller
             } else {
                 $post->status = 0;
             }
-            $post->save();
         }
         $courses = Course::all()->sortByDesc('id');
         return view('dashboard.courses.show', compact('courses'));

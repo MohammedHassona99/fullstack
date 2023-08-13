@@ -38,6 +38,9 @@ class RouteServiceProvider extends ServiceProvider
 
             Route::namespace('admin')
                 ->group(base_path('routes/admin.php'));
+
+            Route::namespace('collection')
+                ->group(base_path('routes/collection.php'));
         });
     }
 
